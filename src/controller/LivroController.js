@@ -1,10 +1,10 @@
 const { response } = require("express");
-const UsuarioModel = require("../model/UsuarioModel");
+const LivroModel = require("../model/LivroModel");
 
-class UsuarioController {
+class LivroController {
    async create(req, res) {
-      const Usuario = new UsuarioModel(req.body);
-      await Usuario.save()
+      const Livro = new LivroModel(req.body);
+      await Livro.save()
          .then((response) => {
             return res.status(200).json(response);
          })
@@ -14,7 +14,7 @@ class UsuarioController {
    }
    //rota para atualizar tarefa//
    async update(req, res) {
-      await UsuarioModel.findByIdAndUpdate({ _id: req.params.id }, req.body, {
+      await LivroModel.findByIdAndUpdate({ _id: req.params.id }, req.body, {
          new: true,
       }) // esse new true é para devolver a tarefa atualizada//
 
@@ -27,7 +27,7 @@ class UsuarioController {
    }
    //filtro listagem por um parametro//
    async all(req, res) {
-      await UsuarioModel.find({ cpf: { $in: req.body.cpf } })
+      await LivroModel.find({ titulo: { $in: req.body.cpf } })
          .sort("asc")
          .then((response) => {
             return res.status(200).json(response);
@@ -38,4 +38,4 @@ class UsuarioController {
    }
 }
 
-module.exports = new UsuarioController();
+module.exports = new LivroController();
