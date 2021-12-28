@@ -5,6 +5,9 @@ server.use(express.json());
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 server.use("/usuario", UsuarioRoutes);
 
+const FuncionarioRoutes = require("./routes/FuncionarioRoutes");
+server.use("/funcionario", FuncionarioRoutes);
+
 const LivroRoutes = require("./routes/LivroRoutes");
 server.use("/livro", LivroRoutes);
 
