@@ -27,7 +27,7 @@ class LivroController {
    }
    //filtro listagem por um parametro//
    async all(req, res) {
-      await LivroModel.find({ titulo: { $in: req.body.cpf } })
+      await LivroModel.find()
          .sort("asc")
          .then((response) => {
             return res.status(200).json(response);

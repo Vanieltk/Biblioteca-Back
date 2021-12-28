@@ -33,9 +33,7 @@ class CategoriaObrasLiterariasController {
    }
    //filtro listagem por um parametro//
    async all(req, res) {
-      await CategoriaObrasLiterariasModel.find({
-         categoria_obras_literarias: { $in: req.body.cpf },
-      })
+      await CategoriaObrasLiterariasModel.find()
          .sort("asc")
          .then((response) => {
             return res.status(200).json(response);

@@ -3,14 +3,14 @@ const router = express.Router();
 
 const UsuarioController = require("../controller/UsuarioController");
 const UsuarioValidation = require("../middlewares/UsuarioValidation");
-const CPFValidation = require("../middlewares/CPFValidation");
-const emailaddressValidation = require("../middlewares/emailaddressValidation");
+const { body, validationResult } = require("express-validator");
+const res = require("express/lib/response");
 
 //validar primeiro depois executar os outros parametros//
 router.post(
    "/",
-   emailaddressValidation,
-   CPFValidation,
+   body("emailaddress").isEmail().withMessage("Email inválido"),
+   body("cpf").isLength({ min: 11 }).withMessage("CPF inválido"),
    UsuarioValidation,
    UsuarioController.create
 );
@@ -19,8 +19,7 @@ router.post(
 router.put("/:id", UsuarioController.update);
 router.get(
    "/filter/all",
-   emailaddressValidation,
-   CPFValidation,
+
    UsuarioController.all
 );
 
