@@ -2,6 +2,7 @@ const mongoose = require("../config/database");
 const Schema = mongoose.Schema;
 
 const LivroSchema = new Schema({
+   sbn: { type: Number, required: true },
    titulo: { type: String, required: true },
    autor: { type: String, required: true },
    idioma: { type: String, required: true },
