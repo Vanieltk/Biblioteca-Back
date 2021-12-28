@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const LivroController = require("../controller/LivroController");
-//const LivroValidation = require("../middlewares/LivroValidation");
+const LivroValidation = require("../middlewares/LivroValidation");
 
 //validar primeiro depois executar os outros parametros//
 router.post(
    "/",
 
-   //LivroValidation,
+   LivroValidation,
    LivroController.create
 );
 
