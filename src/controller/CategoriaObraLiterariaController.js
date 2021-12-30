@@ -1,11 +1,12 @@
 const { response } = require("express");
-const ReservaSitesModel = require("../model/ReservaSitesModel");
+const CategoriaObraLiterariaModel = require("../model/CategoriaObraLiterariaModel");
 
-class ReservaSitesController {
+class CategoriaObraLiterariaController {
    async create(req, res) {
-      const ReservaSites = new ReservaSitesModel(req.body);
-
-      await ReservaSites.save()
+      const CategoriaObraLiteraria = new CategoriaObraLiterariaModel(
+         req.body
+      );
+      await CategoriaObraLiteraria.save()
          .then((response) => {
             return res.status(200).json(response);
          })
@@ -13,18 +14,15 @@ class ReservaSitesController {
             return res.status(500).json(error);
          });
    }
-
    //rota para atualizar tarefa//
    async update(req, res) {
-      await ReservaSitesModel.findByIdAndUpdate(
+      await CategoriaObraLiterariaModel.findByIdAndUpdate(
          { _id: req.params.id },
          req.body,
          {
             new: true,
          }
-      )
-
-         //esse new true é para devolver a tarefa atualizada//
+      ) // esse new true é para devolver a tarefa atualizada//
 
          .then((response) => {
             return res.status(200).json(response);
@@ -34,8 +32,21 @@ class ReservaSitesController {
          });
    }
 
+   //filtro de listagem de apenas uma categoria
+   async getById(req, res) {
+      await CategoriaObraLiterariaModel.find({
+         _id: req.params.id 
+      })
+         .then((response) => {
+            return res.status(200).json(response);
+         })
+         .catch((error) => {
+            return res.status(500).json(error);
+         });
+   }
+   //filtro listagem por um parametro//
    async all(req, res) {
-      await ReservaSitesModel.find()
+      await CategoriaObraLiterariaModel.find()
          .sort("asc")
          .then((response) => {
             return res.status(200).json(response);
@@ -46,4 +57,4 @@ class ReservaSitesController {
    }
 }
 
-module.exports = new ReservaSitesController();
+module.exports = new CategoriaObraLiterariaController();

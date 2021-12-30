@@ -1,12 +1,12 @@
 const { response } = require("express");
-const CategoriaObrasLiterariasModel = require("../model/CategoriaObrasLiterariasModel");
+const CategoriaUsuarioModel = require("../model/CategoriaUsuarioModel");
 
-class CategoriaObrasLiterariasController {
+class CategoriaUsuarioController {
    async create(req, res) {
-      const CategoriaObrasLiterarias = new CategoriaObrasLiterariasModel(
+      const CategoriaUsuario = new CategoriaUsuarioModel(
          req.body
       );
-      await CategoriaObrasLiterarias.save()
+      await CategoriaUsuario.save()
          .then((response) => {
             return res.status(200).json(response);
          })
@@ -16,7 +16,7 @@ class CategoriaObrasLiterariasController {
    }
    //rota para atualizar tarefa//
    async update(req, res) {
-      await CategoriaObrasLiterariasModel.findByIdAndUpdate(
+      await CategoriaUsuarioModel.findByIdAndUpdate(
          { _id: req.params.id },
          req.body,
          {
@@ -31,9 +31,22 @@ class CategoriaObrasLiterariasController {
             return res.status(500).json(error); // para retornar o erro interno //
          });
    }
+
+   //filtro de listagem de apenas uma categoria
+   async getById(req, res) {
+      await CategoriaUsuarioModel.find({
+         _id: req.params.id 
+      })
+         .then((response) => {
+            return res.status(200).json(response);
+         })
+         .catch((error) => {
+            return res.status(500).json(error);
+         });
+   }
    //filtro listagem por um parametro//
    async all(req, res) {
-      await CategoriaObrasLiterariasModel.find()
+      await CategoriaUsuarioModel.find()
          .sort("asc")
          .then((response) => {
             return res.status(200).json(response);
@@ -44,4 +57,4 @@ class CategoriaObrasLiterariasController {
    }
 }
 
-module.exports = new CategoriaObrasLiterariasController();
+module.exports = new CategoriaUsuarioController();

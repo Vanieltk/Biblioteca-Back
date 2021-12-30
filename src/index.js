@@ -5,20 +5,20 @@ server.use(express.json());
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 server.use("/usuario", UsuarioRoutes);
 
-const FuncionarioRoutes = require("./routes/FuncionarioRoutes");
-server.use("/funcionario", FuncionarioRoutes);
+const CategoriaUsuario = require("./routes/CategoriaUsuarioRoutes");
+server.use("/CategoriaUsuario", CategoriaUsuario);
 
-const LivroRoutes = require("./routes/LivroRoutes");
-server.use("/livro", LivroRoutes);
+const ObraLiterariaRoutes = require("./routes/ObraLiterariaRoutes");
+server.use("/ObraLiteraria", ObraLiterariaRoutes);
 
-const CategoriaObrasLiterarias = require("./routes/CategoriaObrasLiterariasRoutes");
-server.use("/categoriaobrasliterarias", CategoriaObrasLiterarias);
+const CategoriaObraLiteraria = require("./routes/CategoriaObraLiterariaRoutes");
+server.use("/CategoriaObraLiteraria", CategoriaObraLiteraria);
 
 const Emprestimo = require("./routes/EmprestimoRoutes");
 server.use("/emprestimo", Emprestimo);
 
-const ReservaSites = require("./routes/ReservaSitesRoutes");
-server.use("/reserva", ReservaSites);
+const ReservaObraLiteraria = require("./routes/ReservaObraLiterariaRoutes");
+server.use("/reserva", ReservaObraLiteraria);
 
 server.listen(3000, () => {
    console.log("API ONLINE");
