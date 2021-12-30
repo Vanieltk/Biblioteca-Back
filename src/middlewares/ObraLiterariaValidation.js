@@ -1,9 +1,9 @@
-const LivroModel = require("../model/LivroModel");
+const ObraLiterariaModel = require("../model/ObraLiterariaModel");
 
 const { body, validationResult } = require("express-validator");
 
 const { isPast } = require("date-fns"); // pacote que faz com que eu tenho controle de data e hora//
-const LivroValidation = async (req, res, next) => {
+const ObraLiterariaValidation = async (req, res, next) => {
    const {
       sbn,
       titulo,
@@ -36,4 +36,4 @@ const LivroValidation = async (req, res, next) => {
 
    next();
 };
-module.exports = LivroValidation;
+module.exports = ObraLiterariaValidation;
