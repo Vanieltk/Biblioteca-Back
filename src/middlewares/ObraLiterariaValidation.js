@@ -22,17 +22,17 @@ const LivroValidation = async (req, res, next) => {
 
    let exists;
 
-   //Buscar no Banco para verificar a existencia desse cadastro//
+   // //Buscar no Banco para verificar a existencia desse cadastro//
 
-   exists = await LivroModel.findOne({
-      $or: [{ sbn: sbn }],
-   });
-   // console.log('exists', exists.emailaddress === new String(emailaddress))//
+   // exists = await UsuarioModel.findOne({
+   //    $or: [{ titulo: titulo }],
+   // });
+   // // console.log('exists', exists.emailaddress === new String(emailaddress))//
 
-   // Para caso tenha algum usuário ou obra literária cadastrada//
-   if (exists) {
-      return res.status(400).json({ error: "já existe esse cadastro" });
-   }
+   // // Para caso tenha algum usuário ou obra literária cadastrada//
+   // if (exists) {
+   //    return res.status(400).json({ error: "ObraLiteraria já cadastrado" });
+   // }
 
    next();
 };

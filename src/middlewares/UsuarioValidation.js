@@ -7,14 +7,7 @@ const UsuarioValidation = async (req, res, next) => {
    const {
       cpf,
       emailaddress,
-      nomecompleto,
-      datanascimento,
-      logadouro,
-      cep,
-      bairro,
-      cidade,
-      estado,
-      telefone,
+     
    } = req.body;
 
    const errors = validationResult(req);
