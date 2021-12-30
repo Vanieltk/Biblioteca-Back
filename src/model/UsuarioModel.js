@@ -13,7 +13,7 @@ const UsuarioSchema = new Schema({
    cidade: { type: String, required: true },
    estado: { type: String, required: true },
    telefone: { type: String, required: true },
-   categoria_usuario: {type: Object},
+   categoria_usuario: {type: Schema.Types.ObjectId, ref:'CategoriaUsuario'},
    senha: {type: String, required: true},
    done: { type: Boolean, default: false },
    create: { type: Date, default: Date.now() },

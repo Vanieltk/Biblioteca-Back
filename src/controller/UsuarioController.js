@@ -5,13 +5,8 @@ const CategoriaUsuarioModel = require("../model/CategoriaUsuarioModel");
 class UsuarioController {
    async create(req, res) {
 
-      const CategoriaUsuario = await CategoriaUsuarioModel.findOne({
-         _id: req.body.idCategoriaUsuario
-      })
-         
       let Usuario = new UsuarioModel(req.body);
-      Usuario.categoria_usuario = CategoriaUsuario
-  
+      Usuario.categoria_usuario = req.body.idCategoriaUsuario
 
       await Usuario.save()
          .then((response) => {
@@ -25,11 +20,8 @@ class UsuarioController {
    //rota para atualizar tarefa//
    async update(req, res) {
       await UsuarioModel.findByIdAndUpdate({ _id: req.params.id }, req.body, {
-         new: true,
+         new: true, //esse new true é para devolver a tarefa atualizada//
       })
-
-         //esse new true é para devolver a tarefa atualizada//
-
          .then((response) => {
             return res.status(200).json(response);
          })
@@ -42,7 +34,7 @@ class UsuarioController {
    async getById(req, res) {
       await UsuarioModel.find({
          _id: req.params.id 
-      })
+      }).populate('categoria_usuario')
          .then((response) => {
             return res.status(200).json(response);
          })
