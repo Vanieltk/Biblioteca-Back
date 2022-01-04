@@ -2,6 +2,7 @@ const express = require("express");
 const server = express();
 require('dotenv').config();
 server.use(express.json());
+server.use(require('cors'));
 
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 server.use("/usuario", UsuarioRoutes);
