@@ -37,7 +37,7 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
 
     - name: Install dependencies
-      run: npm --frozen-lockfile
+      run: yarn --frozen-lockfile
 
     - name: Run all tests
-      run: npm test
+      run: yarn test
