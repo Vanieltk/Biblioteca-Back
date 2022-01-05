@@ -2,25 +2,28 @@
 
 name: Workflow Biblioteca
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
-    branches: [develop]
+    branches:
+      - master
+      - develop
   pull_request:
-    branches: [ main ]
-    branches: [develop]
+    branches:
+      - master
+      - develop
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [16.x]
         mongodb-version: [4.2]
 
-  steps:
+    steps:
     - uses: actions/checkout@v2
 
     - name: Use Node.js ${{ matrix.node-version }}
@@ -32,7 +35,7 @@ jobs:
       uses: supercharge/mongodb-github-action@1.1.0
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
-        
+
     - name: Install dependencies
       run: yarn --frozen-lockfile
 
