@@ -7,10 +7,12 @@ on:
     branches:
       - master
       - develop
+      - feature_deploy_continuo
   pull_request:
     branches:
       - master
       - develop
+      - feature_deploy_continuo
 
 jobs:
 
