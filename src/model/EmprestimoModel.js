@@ -8,7 +8,7 @@ const EmprestimoSchema = new Schema({
    data_emprestimo: { type: Date, default: Date.now() },
    data_devolucao: { type: Date, required: true },
    create: { type: Date, default: Date.now() },
-   funcionario: {type: String},
+   funcionario: { type: String },
 });
 
 module.exports = mongoose.model("Emprestimo", EmprestimoSchema);

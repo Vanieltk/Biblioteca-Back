@@ -1,12 +1,11 @@
 const express = require("express");
 const server = express();
-require('dotenv').config();
+require("dotenv").config();
 server.use(express.json());
-server.use(require('cors'));
 
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 server.use("/usuario", UsuarioRoutes);
-server.use("/login", UsuarioRoutes)
+server.use("/login", UsuarioRoutes);
 
 const CategoriaUsuario = require("./routes/CategoriaUsuarioRoutes");
 server.use("/CategoriaUsuario", CategoriaUsuario);

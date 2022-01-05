@@ -8,8 +8,8 @@ const ReservaObraLiterariaSchema = new Schema({
    data_prevista_retirada: { type: Date, required: true },
    data_prevista_devolucao: { type: Date, required: true },
    data_reserva: { type: Date, required: true },
-   funcionario: { type: String},
-   finalizado:{ type: Boolean, default: false},
+   funcionario: { type: String },
+   finalizado: { type: Boolean, default: false },
    create: { type: Date, default: Date.now() },
 });
 

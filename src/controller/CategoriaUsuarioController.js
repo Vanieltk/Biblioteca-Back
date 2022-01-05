@@ -3,9 +3,7 @@ const CategoriaUsuarioModel = require("../model/CategoriaUsuarioModel");
 
 class CategoriaUsuarioController {
    async create(req, res) {
-      const CategoriaUsuario = new CategoriaUsuarioModel(
-         req.body
-      );
+      const CategoriaUsuario = new CategoriaUsuarioModel(req.body);
       await CategoriaUsuario.save()
          .then((response) => {
             return res.status(200).json(response);
@@ -35,7 +33,7 @@ class CategoriaUsuarioController {
    //filtro de listagem de apenas uma categoria
    async getById(req, res) {
       await CategoriaUsuarioModel.find({
-         _id: req.params.id 
+         _id: req.params.id,
       })
          .then((response) => {
             return res.status(200).json(response);

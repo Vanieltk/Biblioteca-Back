@@ -12,29 +12,30 @@ class EmprestimoController {
          .catch((error) => {
             return res.status(500).json(error);
          });
-      }
-   
- //rota para buscar por id //
+   }
 
- async getById(req, res) {
-   await EmprestimoModel.find({
-      _id: req.params.id 
-   })
-      .then((response) => {
-         return res.status(200).json(response);
+   //rota para buscar por id //
+
+   async getById(req, res) {
+      await EmprestimoModel.find({
+         _id: req.params.id,
       })
-      .catch((error) => {
-         return res.status(500).json(error);
-      });
-}
+         .then((response) => {
+            return res.status(200).json(response);
+         })
+         .catch((error) => {
+            return res.status(500).json(error);
+         });
+   }
    //rota para atualizar tarefa//
    async update(req, res) {
       await EmprestimoModel.findByIdAndUpdate(
          { _id: req.params.id },
          req.body,
          {
-            new: true,                           
-         })
+            new: true,
+         }
+      )
          .then((response) => {
             return res.status(200).json(response);
          })
