@@ -3,9 +3,7 @@ const CategoriaObraLiterariaModel = require("../model/CategoriaObraLiterariaMode
 
 class CategoriaObraLiterariaController {
    async create(req, res) {
-      const CategoriaObraLiteraria = new CategoriaObraLiterariaModel(
-         req.body
-      );
+      const CategoriaObraLiteraria = new CategoriaObraLiterariaModel(req.body);
       await CategoriaObraLiteraria.save()
          .then((response) => {
             return res.status(200).json(response);
@@ -35,7 +33,7 @@ class CategoriaObraLiterariaController {
    //filtro de listagem de apenas uma categoria
    async getById(req, res) {
       await CategoriaObraLiterariaModel.find({
-         _id: req.params.id 
+         _id: req.params.id,
       })
          .then((response) => {
             return res.status(200).json(response);

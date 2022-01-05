@@ -4,11 +4,7 @@ const { body, validationResult } = require("express-validator");
 
 const { isPast } = require("date-fns"); // pacote que faz com que eu tenho controle de data e hora//
 const UsuarioValidation = async (req, res, next) => {
-   const {
-      cpf,
-      emailaddress,
-     
-   } = req.body;
+   const { cpf, emailaddress } = req.body;
 
    const errors = validationResult(req);
    if (!errors.isEmpty()) {

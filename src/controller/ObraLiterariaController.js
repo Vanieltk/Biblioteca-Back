@@ -3,16 +3,13 @@ const CategoriaObraLiterariaModel = require("../model/CategoriaObraLiterariaMode
 const ObraLiterariaModel = require("../model/ObraLiterariaModel");
 
 class ObraLiterariaController {
- 
    async create(req, res) {
-     
       const CategoriaObraLiteraria = await CategoriaObraLiterariaModel.findOne({
-         _id: req.body.idCategoriaObraLiteraria
-      })
-      
-      let ObraLiteraria = new ObraLiterariaModel(req.body);
-      ObraLiteraria.categoria_obra_literaria = CategoriaObraLiteraria
+         _id: req.body.idCategoriaObraLiteraria,
+      });
 
+      let ObraLiteraria = new ObraLiterariaModel(req.body);
+      ObraLiteraria.categoria_obra_literaria = CategoriaObraLiteraria;
 
       await ObraLiteraria.save()
          .then((response) => {
@@ -26,7 +23,7 @@ class ObraLiterariaController {
 
    async getById(req, res) {
       await ObraLiterariaModel.find({
-         _id: req.params.id 
+         _id: req.params.id,
       })
          .then((response) => {
             return res.status(200).json(response);
@@ -36,12 +33,15 @@ class ObraLiterariaController {
          });
    }
 
-
    //rota para atualizar tarefa//
    async update(req, res) {
-      await ObraLiterariaModel.findByIdAndUpdate({ _id: req.params.id }, req.body, {
-         new: true,
-      }) // esse new true é para devolver a tarefa atualizada//
+      await ObraLiterariaModel.findByIdAndUpdate(
+         { _id: req.params.id },
+         req.body,
+         {
+            new: true,
+         }
+      ) // esse new true é para devolver a tarefa atualizada//
 
          .then((response) => {
             return res.status(200).json(response);

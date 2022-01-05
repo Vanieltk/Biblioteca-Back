@@ -7,7 +7,7 @@ const ObraLiterariaSchema = new Schema({
    idioma: { type: String, required: true },
    area_conhecimento: { type: String, requered: true },
    data_publicacao: { type: Date, required: true },
-   categoria_obra_literaria: {type: Object},
+   categoria_obra_literaria: { type: Object },
    done: { type: Boolean, default: false },
    create: { type: Date, default: Date.now() },
 });
