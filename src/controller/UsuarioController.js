@@ -68,19 +68,19 @@ class UsuarioController {
    async login(req, res) {
       const { emailaddress, senha } = req.body;
       if (!emailaddress || !senha) {
-         res.status(400).json({ erro: "Login ou senha Incorretos" });
+         res.status(401).json({ erro: "Login ou senha Incorretos" });
          return;
       }
 
       const user = await UsuarioModel.findOne({ emailaddress: emailaddress });
       if (!user) {
-         return res.status(422).json({ msg: "Email não Cadastrado" });
+         return res.status(401).json({ msg: "Email não Cadastrado" });
       }
 
       const checkpass = await bcrypt.compare(senha, user.senha);
 
       if (!checkpass) {
-         return res.status(422).json({ msg: "senha Invalida" });
+         return res.status(401).json({ msg: "senha Invalida" });
       }
 
       try {

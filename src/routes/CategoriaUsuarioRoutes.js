@@ -7,7 +7,6 @@ const CategoriaUsuarioController = require("../controller/CategoriaUsuarioContro
 //validar primeiro depois executar os outros parametros//
 router.post(
    "/",
-
    CategoriaUsuarioController.create
 );
 
@@ -18,7 +17,6 @@ router.get('/:id', CategoriaUsuarioController.getById)
 router.put("/:id", CategoriaUsuarioController.update);
 router.get(
    "/filter/all",
-
    CategoriaUsuarioController.all
 );
 
