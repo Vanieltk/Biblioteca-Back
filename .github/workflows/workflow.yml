@@ -5,14 +5,13 @@ name: Workflow Biblioteca
 on:
   push:
     branches:
-      - master
+      - main
       - develop
-      - feature_deploy_continuo
   pull_request:
     branches:
-      - master
+      - main
       - develop
-      - feature_deploy_continuo
+      
 
 jobs:
 
@@ -40,3 +39,11 @@ jobs:
 
     - name: Install dependencies
       run: yarn --frozen-lockfile
+
+    - name: Deploy application
+      if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "bee-biblioteca"
+        heroku_email: "vanielpdc@gmail.com"
