@@ -6,9 +6,6 @@ const UsuarioValidation = require("../middlewares/UsuarioValidation");
 
 const { body } = require("express-validator");
 
-
-
-
 //validar primeiro depois executar os outros parametros//
 router.post(
    "/",
@@ -20,11 +17,10 @@ router.post(
    UsuarioController.create
 );
 
-router.post('/:login', UsuarioController.login)
+router.post("/:login", UsuarioController.login);
 
 //rota de id um usuario//
-router.get('/:id', UsuarioController.getById);
-
+router.get("/:id", UsuarioController.getById);
 
 //rota de update //
 router.put("/:id", UsuarioController.update);

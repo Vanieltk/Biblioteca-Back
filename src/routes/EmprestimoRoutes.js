@@ -13,7 +13,7 @@ router.post(
 );
 
 //rota de id um usuario//
-router.get('/:id', EmprestimoController.getById);
+router.get("/:id", EmprestimoController.getById);
 
 //rota de update //
 router.put("/:id", EmprestimoController.update);

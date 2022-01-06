@@ -3,7 +3,6 @@ const router = express.Router();
 
 const CategoriaUsuarioController = require("../controller/CategoriaUsuarioController");
 
-
 //validar primeiro depois executar os outros parametros//
 router.post(
    "/",
@@ -12,7 +11,7 @@ router.post(
 );
 
 // rota de id Categoria//
-router.get('/:id', CategoriaUsuarioController.getById)
+router.get("/:id", CategoriaUsuarioController.getById);
 
 //rota de update //
 router.put("/:id", CategoriaUsuarioController.update);

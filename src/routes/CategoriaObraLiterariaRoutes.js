@@ -13,7 +13,7 @@ router.post(
 );
 
 // rota de id Categoria//
-router.get('/:id', CategoriaObraLiterariaController.getById)
+router.get("/:id", CategoriaObraLiterariaController.getById);
 
 //rota de update //
 router.put("/:id", CategoriaObraLiterariaController.update);

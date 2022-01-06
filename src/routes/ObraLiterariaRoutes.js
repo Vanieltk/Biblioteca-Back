@@ -13,7 +13,7 @@ router.post(
 );
 
 //rota de id de um ObraLiteraria//
-router.get('/:id', ObraLiterariaController.getById);
+router.get("/:id", ObraLiterariaController.getById);
 
 //rota de update //
 router.put("/:id", ObraLiterariaController.update);
