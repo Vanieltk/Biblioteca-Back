@@ -20,7 +20,7 @@ router.post(
    UsuarioController.create
 );
 
-router.post('/:login',UsuarioController.login)
+router.post('/:login', UsuarioController.login)
 
 //rota de id um usuario//
 router.get('/:id', UsuarioController.getById);
